@@ -22,7 +22,6 @@ export class CoffeesService {
   }
 
   findOne(id: string) {
-    throw 'A random error';
     const coffee = this.coffees.find((item) => item.id === Number(id));
 
     if (!coffee) {
