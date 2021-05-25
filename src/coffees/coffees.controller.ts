@@ -1,4 +1,5 @@
 import { CoffeesService } from './coffees.service';
+import { CreateCoffeDto } from './dto/create-coffe.dto';
 import {
   Body,
   Controller,
@@ -9,10 +10,11 @@ import {
   Post,
   Query,
 } from '@nestjs/common';
+import { UpdateCoffeDto } from './dto/update-coffe.dto';
 
 @Controller('coffees')
 export class CoffeesController {
-  constructor(private readonly coffeeService: CoffeesService) {}
+  constructor(private readonly coffeeService: CoffeesService) { }
 
   @Get()
   findAll(@Query() paginationQuery) {
@@ -26,13 +28,13 @@ export class CoffeesController {
   }
 
   @Post()
-  create(@Body() body) {
-    return this.coffeeService.create(body);
+  create(@Body() createCoffeeDto: CreateCoffeDto) {
+    return this.coffeeService.create(createCoffeeDto);
   }
 
   @Patch(':id')
-  update(@Param('id') id: string, @Body() body) {
-    return this.coffeeService.update(id, body);
+  update(@Param('id') id: string, @Body() updateCoffeeDto: UpdateCoffeDto) {
+    return this.coffeeService.update(id, updateCoffeeDto);
   }
 
   @Delete(':id')
