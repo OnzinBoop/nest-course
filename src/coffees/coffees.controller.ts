@@ -22,13 +22,13 @@ export class CoffeesController {
   }
 
   @Get(':id')
-  findOne(@Param('id') id: string) {
-    return this.coffeeService.findOne(id);
+  findOne(@Param('id') id: number) {
+    return this.coffeeService.findOne('' + id);
   }
 
   @Post()
-  create(@Body() body: CreateCoffeeDto) {
-    return this.coffeeService.create(body);
+  create(@Body() createCoffeeDto: CreateCoffeeDto) {
+    return this.coffeeService.create(createCoffeeDto);
   }
 
   @Patch(':id')
