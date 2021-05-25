@@ -9,10 +9,11 @@ import {
   Post,
   Query,
 } from '@nestjs/common';
+import { CreateCoffeeDto } from './dto/create-coffee.dto';
 
 @Controller('coffees')
 export class CoffeesController {
-  constructor(private readonly coffeeService: CoffeesService) {}
+  constructor(private readonly coffeeService: CoffeesService) { }
 
   @Get()
   findAll(@Query() paginationQuery) {
@@ -26,7 +27,7 @@ export class CoffeesController {
   }
 
   @Post()
-  create(@Body() body) {
+  create(@Body() body: CreateCoffeeDto) {
     return this.coffeeService.create(body);
   }
 
